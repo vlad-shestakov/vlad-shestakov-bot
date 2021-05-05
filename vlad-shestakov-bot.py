@@ -11,7 +11,7 @@ from bd1 import BD1
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
 
 API_TOKEN = os.environ['BOT_TOKEN']
-VERSION = '1.0.15'
+VERSION = '1.0.15 (06.05.2021)'
 
 bot = telebot.TeleBot(API_TOKEN)
 
