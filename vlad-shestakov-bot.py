@@ -12,7 +12,7 @@ from bd1 import BD1
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
 
 API_TOKEN = os.environ['BOT_TOKEN']
-VERSION = '1.0.13'
+VERSION = '1.0.14'
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -25,7 +25,7 @@ def get_version():
 def send_welcome(message):
     """Сообщение для /help /start"""
     bot.reply_to(message, \
-                 f'\nПривет,  {message.from_user.first_name}, я бот Владмир.'+\
+                 f'\nПривет,  {message.from_user.first_name}, я бот Владимир.'+\
                  """\n
 Я использую команды /start /help /ver 
 /us - Список пользователей (чтение из БД)
