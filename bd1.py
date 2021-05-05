@@ -21,3 +21,11 @@ class BD1:
         #return (str(query_results))
         # return (123)
         return (str(text))
+
+
+
+    def po_list():
+        cur.execute("""SELECT * FROM posts""")
+        query_results = cur.fetchall()
+        text = '\n'.join([', '.join(map(str, x)) for x in query_results])
+        return (str(text))

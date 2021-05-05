@@ -20,22 +20,24 @@ bot = telebot.TeleBot(API_TOKEN)
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
     bot.reply_to(message, """\
-Привет, я бот Владмира Шестакова!\n
-Я использую команды start / help / us / привет"""+\
+Привет, я бот Владмир.\n
+Я использую команды /start /help 
+us - Список пользователей
+po - Список постов 
+привет - отзыв"""+\
                  f'\nВаше имя - {message.from_user.first_name}')
-
-
-# Handle '/start' and '/help'
-@bot.message_handler(commands=['us'])
-def send_welcome(message):
-    users_list = BD1.us_list()
-    bot.reply_to(message, f'\nСписок пользователей: {users_list}')
 
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     if message.text.lower() == 'привет':
         bot.send_message(message.from_user.id, 'Привет!')
+    elif message.text.lower() == 'us':
+        users_list = BD1.us_list()
+        bot.reply_to(message, f'\nСписок пользователей:\n{users_list}')
+    elif message.text.lower() == 'po':
+        po_list = BD1.po_list()
+        bot.reply_to(message, f'\nСписок пользователей:\n{po_list}')
     else:
         bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
 
