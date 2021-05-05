@@ -4,9 +4,11 @@
 # It echoes any incoming text messages.
 
 import telebot
+import os
 
-#API_TOKEN = '17228643646:AAAEHmm8b1dICPIk13Qp5Ul3YlOILcUjjzpZE'
-API_TOKEN = getenv('BOT_TOKEN')
+#API_TOKEN = '17228643646:AAAqEHmm8b1dICPIk13Qp5Ul3YlOILcUjjzpZE'  #old_code
+#API_TOKEN = getenv('BOT_TOKEN')  #old_code
+API_TOKEN = os.environ['TOKEN']
 
 bot = telebot.TeleBot(API_TOKEN)
 
