@@ -12,7 +12,7 @@ from bd1 import BD1
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
 
 API_TOKEN = os.environ['BOT_TOKEN']
-VERSION = '1.0.0.12'
+VERSION = '1.0.13'
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -28,8 +28,8 @@ def send_welcome(message):
                  f'\nПривет,  {message.from_user.first_name}, я бот Владмир.'+\
                  """\n
 Я использую команды /start /help /ver 
-us - Список пользователей (чтение из БД)
-po - Список постов (чтение из БД)
+/us - Список пользователей (чтение из БД)
+/po - Список постов (чтение из БД)
 привет - отзыв""")
 
 # Handle '/ver'
@@ -38,16 +38,22 @@ def send_ver(message):
     bot.reply_to(message, get_version())
 
 
+# Handle '/us'
+@bot.message_handler(commands=['us'])
+def send_ver(message):
+        users_list = BD1.users_list()
+        bot.reply_to(message, f'\nСписок пользователей:\n{users_list}')
+
+# Handle '/po'
+@bot.message_handler(commands=['po'])
+def send_ver(message):
+        po_list = BD1.posts_list()
+        bot.reply_to(message, f'\nСписок постов пользователей:\n{po_list}')
+
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     if message.text.lower() == 'привет':
         bot.send_message(message.from_user.id, 'Привет!')
-    elif message.text.lower() == 'us':
-        users_list = BD1.users_list()
-        bot.reply_to(message, f'\nСписок пользователей:\n{users_list}')
-    elif message.text.lower() == 'po':
-        po_list = BD1.posts_list()
-        bot.reply_to(message, f'\nСписок постов пользователей:\n{po_list}')
     else:
         bot.send_message(message.from_user.id, 'Не понимаю, что это значит. Используйте /help')
 
