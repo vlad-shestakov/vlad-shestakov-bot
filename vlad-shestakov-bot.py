@@ -6,8 +6,9 @@
 import telebot
 import os
 
-#API_TOKEN = '17228643646:AAAqEHmm8b1dICPIk13Qp5Ul3YlOILcUjjzpZE'  #old_code
-#API_TOKEN = getenv('BOT_TOKEN')  #old_code
+# На сервере Heroku установить переменную окружения
+# heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
+
 API_TOKEN = os.environ['BOT_TOKEN']
 
 bot = telebot.TeleBot(API_TOKEN)
