@@ -1,1 +1,1 @@
-web: python vlad-shestakov-bot.py
+worker: python vlad-shestakov-bot.py
