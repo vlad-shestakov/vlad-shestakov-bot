@@ -41,7 +41,8 @@ https://tproger.ru/translations/telegram-bot-create-and-deploy/
   > heroku pg:psql -a vlad-shestakov-bot
   * Накатить скрипты из папки **setup\createdb.sql**
 ## Запуск приложения
-* Через интерфейс или командой 
+* Запуская батники в bin 
+* Через интерфейс или командой (**_run.bat**) 
   > heroku ps:scale worker=1 -a vlad-shestakov-bot
-* Наблюдать за логом командой
-> heroku logs --tail
+* Наблюдать за логом командой (**show_log.bat**)
+> heroku logs --tail -a vlad-shestakov-bot

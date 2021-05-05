@@ -5,7 +5,7 @@
 
 import telebot
 import os
-from db_operations import BD1
+from bd1 import BD1
 # print('123')
 
 # На сервере Heroku установить переменную окружения
