@@ -17,7 +17,7 @@ def send_welcome(message):
 Hi there, I am EchoBot.
 I am here to echo your kind words back to you. Just say anything nice and I'll say the exact same thing to you!\
 """+\
-                 f'Ваше имя - {message.from_user.first_name}')
+                 f'\nВаше имя - {message.from_user.first_name}')
 
 
 @bot.message_handler(content_types=['text'])
