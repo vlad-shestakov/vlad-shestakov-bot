@@ -5,6 +5,8 @@
 
 import telebot
 import os
+from bd1 import BD1
+# print('123')
 
 # На сервере Heroku установить переменную окружения
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
@@ -19,8 +21,15 @@ bot = telebot.TeleBot(API_TOKEN)
 def send_welcome(message):
     bot.reply_to(message, """\
 Привет, я бот Владмира Шестакова!\n
-Я использую команды start / help / привет"""+\
+Я использую команды start / help / us / привет"""+\
                  f'\nВаше имя - {message.from_user.first_name}')
+
+
+# Handle '/start' and '/help'
+@bot.message_handler(commands=['us'])
+def send_welcome(message):
+    users_list = BD1.us_list()
+    bot.reply_to(message, f'\nСписок пользователей: {users_list}')
 
 
 @bot.message_handler(content_types=['text'])
@@ -36,4 +45,6 @@ def get_text_messages(message):
 def echo_message(message):
     bot.reply_to(message, message.text)
 
+
 bot.polling(none_stop=True)
+# print(BD1.ss())
