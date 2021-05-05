@@ -8,6 +8,7 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cur = conn.cursor()
 print("Database opened successfully")
 
+
 class BD1:
     """Класс доступа к БД"""
 

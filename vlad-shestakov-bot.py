@@ -7,30 +7,32 @@ import telebot
 import os
 from bd1 import BD1
 
-
 # На сервере Heroku установить переменную окружения
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
 
 API_TOKEN = os.environ['BOT_TOKEN']
-VERSION = '1.0.14'
+VERSION = '1.0.15'
 
 bot = telebot.TeleBot(API_TOKEN)
 
+
 def get_version():
     """Возвращает версию приложения"""
-    return (f'Версия приложения - {VERSION}')
+    return f'Версия приложения - {VERSION}'
+
 
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
     """Сообщение для /help /start"""
-    bot.reply_to(message, \
-                 f'\nПривет,  {message.from_user.first_name}, я бот Владимир.'+\
+    bot.reply_to(message,
+                 f'\nПривет,  {message.from_user.first_name}, я бот Владимир.' +
                  """\n
 Я использую команды /start /help /ver 
 /us - Список пользователей (чтение из БД)
 /po - Список постов (чтение из БД)
 привет - отзыв""")
+
 
 # Handle '/ver'
 @bot.message_handler(commands=['ver'])
@@ -41,14 +43,16 @@ def send_ver(message):
 # Handle '/us'
 @bot.message_handler(commands=['us'])
 def send_ver(message):
-        users_list = BD1.users_list()
-        bot.reply_to(message, f'\nСписок пользователей:\n{users_list}')
+    users_list = BD1.users_list()
+    bot.reply_to(message, f'\nСписок пользователей:\n{users_list}')
+
 
 # Handle '/po'
 @bot.message_handler(commands=['po'])
 def send_ver(message):
-        po_list = BD1.posts_list()
-        bot.reply_to(message, f'\nСписок постов пользователей:\n{po_list}')
+    po_list = BD1.posts_list
+    bot.reply_to(message, f'\nСписок постов пользователей:\n{po_list}')
+
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
