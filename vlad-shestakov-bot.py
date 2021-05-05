@@ -37,9 +37,9 @@ def get_text_messages(message):
         bot.reply_to(message, f'\nСписок пользователей:\n{users_list}')
     elif message.text.lower() == 'po':
         po_list = BD1.po_list()
-        bot.reply_to(message, f'\nСписок пользователей:\n{po_list}')
+        bot.reply_to(message, f'\nСписок постов пользователей:\n{po_list}')
     else:
-        bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
+        bot.send_message(message.from_user.id, 'Не понимаю, что это значит. Используйте /help')
 
 
 # Handle all other messages with content_type 'text' (content_types defaults to ['text'])
