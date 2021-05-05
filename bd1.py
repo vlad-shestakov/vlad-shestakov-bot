@@ -24,4 +24,4 @@ class BD1:
         cur.execute("""SELECT * FROM posts""")
         query_results = cur.fetchall()
         text = '\n'.join([', '.join(map(str, x)) for x in query_results])
-        return str(text)
+        return (str(text))

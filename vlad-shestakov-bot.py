@@ -11,7 +11,7 @@ from bd1 import BD1
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
 
 API_TOKEN = os.environ['BOT_TOKEN']
-VERSION = '1.0.15 (06.05.2021)'
+VERSION = '1.0.16 (06.05.2021)'
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -50,7 +50,7 @@ def send_ver(message):
 # Handle '/po'
 @bot.message_handler(commands=['po'])
 def send_ver(message):
-    po_list = BD1.posts_list
+    po_list = BD1.posts_list()
     bot.reply_to(message, f'\nСписок постов пользователей:\n{po_list}')
 
 
