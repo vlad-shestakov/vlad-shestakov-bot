@@ -6,7 +6,7 @@
 import telebot
 import os
 from bd1 import BD1
-# print('123')
+
 
 # На сервере Heroku установить переменную окружения
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
@@ -49,4 +49,4 @@ def echo_message(message):
 
 
 bot.polling(none_stop=True)
-# print(BD1.ss())
+# print(BD1.users_list())
