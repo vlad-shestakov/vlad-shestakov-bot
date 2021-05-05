@@ -16,6 +16,7 @@ def send_welcome(message):
     bot.reply_to(message, """\
 Hi there, I am EchoBot.
 I am here to echo your kind words back to you. Just say anything nice and I'll say the exact same thing to you!\
+\nЯ использую команды start / help / привет
 """+\
                  f'\nВаше имя - {message.from_user.first_name}')
 
