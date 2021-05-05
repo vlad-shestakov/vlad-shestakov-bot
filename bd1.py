@@ -11,14 +11,14 @@ print("Database opened successfully")
 class BD1:
     """Класс доступа к БД"""
 
-    def users_list(self):
+    def users_list():
         """Возвращает список пользователей"""
         cur.execute("""SELECT * FROM users""")
         query_results = cur.fetchall()
         text = '\n'.join([', '.join(map(str, x)) for x in query_results])
         return str(text)
 
-    def posts_list(self):
+    def posts_list():
         """Возвращает список постов пользователей"""
         cur.execute("""SELECT * FROM posts""")
         query_results = cur.fetchall()
