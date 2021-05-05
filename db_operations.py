@@ -11,20 +11,19 @@ cur = conn.cursor()
 print("Database opened successfully")
 
 class BD1:
+    '''Класс доступа к БД'''
 
-    def us_list():
-        #cur.execute("""SELECT * FROM sample WHERE 1=1""")
+    def users_list():
+        '''Возвращает список пользователей'''
         cur.execute("""SELECT * FROM users""")
         query_results = cur.fetchall()
         text = '\n'.join([', '.join(map(str, x)) for x in query_results])
-        #print(len(query_results))
-        #return (str(query_results))
-        # return (123)
         return (str(text))
 
 
 
-    def po_list():
+    def posts_list():
+        '''Возвращает список постов пользователей'''
         cur.execute("""SELECT * FROM posts""")
         query_results = cur.fetchall()
         text = '\n'.join([', '.join(map(str, x)) for x in query_results])
