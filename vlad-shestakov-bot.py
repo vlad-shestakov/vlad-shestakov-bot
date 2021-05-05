@@ -14,7 +14,7 @@ bot = telebot.TeleBot(API_TOKEN)
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
     bot.reply_to(message, """\
-Привет, я бот Владмира Шестакова\n
+Привет, я бот Владмира Шестакова!\n
 Я использую команды start / help / привет"""+\
                  f'\nВаше имя - {message.from_user.first_name}')
 
