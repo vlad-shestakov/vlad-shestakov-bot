@@ -2,11 +2,11 @@
 
 # This is a simple echo bot using the decorator mechanism.
 # It echoes any incoming text messages.
-# Этот коммент прямо из github сделан
 
 import telebot
 import os
 from bd1 import BD1
+from telebot import types
 
 # На сервере Heroku установить переменную окружения
 # heroku config:set BOT_TOKEN=<YOUR_TOKEN> -a <YOUR_APP_NAME>
@@ -26,13 +26,18 @@ def get_version():
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
     """Сообщение для /help /start"""
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    item1 = types.KeyboardButton("/ver")
+    item2 = types.KeyboardButton("/us")
+    item3 = types.KeyboardButton ("/po")
+    markup.add(item1, item2, item3)
     bot.reply_to(message,
                  f'\nПривет,  {message.from_user.first_name}, я бот Владимир.' +
                  """\n
 Я использую команды /start /help /ver 
 /us - Список пользователей (чтение из БД)
 /po - Список постов (чтение из БД)
-привет - отзыв""")
+привет - отзыв""", reply_markup=markup)
 
 
 # Handle '/ver'
