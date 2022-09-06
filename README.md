@@ -1,5 +1,9 @@
-# vlad-shestakov-bot
-Test telegram bot - [VladShestakovBot](https://web.telegram.org/z/#1722864364)
+# VladShestakovBot
+Учебный телеграм бот, тест разработки на Python, API телеграм, Heroku CI/CD
+
+Попробуйте телеграм бот - [VladShestakovBot](https://web.telegram.org/z/#1722864364)
+
+<img src="./res/images/screenshots/2022-09-06-screenshoot-02.jpg" alt="drawing" width="300" align="top"/>   <img src="./res/images/screenshots/2022-09-06-screenshoot-01.jpg" alt="drawing" width="300" align="top"/>
 
 ## Как это устроено:
 * Бот написан на Python
