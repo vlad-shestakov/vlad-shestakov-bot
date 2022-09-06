@@ -1,17 +1,17 @@
 # vlad-shestakov-bot
-Test telegram bot - vlad-shestakov-bot
-
-## Команды:
-* **/help /start**
-* **us** - Список пользователей из БД (только чтение)
-* **po** - Список постов пользователей из БД (только чтение)
-* **привет**
+Test telegram bot - [VladShestakovBot](https://web.telegram.org/z/#1722864364)
 
 ## Как это устроено:
 * Бот написан на Python
 * Развернут на сервисе - heroku.com
 * Обновляется и деплоится автоматически через репозиторий GitHub
 * Использует БД PostgreSQL 
+
+## Команды:
+* **/help /start**
+* **us** - Список пользователей из БД (только чтение)
+* **po** - Список постов пользователей из БД (только чтение)
+* **привет**
 
 Первоначально использовал инструкцию:
 https://tproger.ru/translations/telegram-bot-create-and-deploy/
