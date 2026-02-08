@@ -1,44 +1,51 @@
 # vlad-shestakov-bot-priv
-Test telegram bot - [VladShestakovBot](https://web.telegram.org/z/#1722864364)
 
-## Как это устроено:
-* Бот написан на Python
-* Предназначен для разворачивания на хостинге
-* Использует БД PostgreSQL 
+Тестовый Telegram-бот [VladShestakovBot](https://web.telegram.org/z/#1722864364). Стек: Python, PostgreSQL, Liquibase. Установка и запуск — [install.md](install.md).
 
-## Команды:
-* **/help /start**
-* **us** - Список пользователей из БД (только чтение)
-* **po** - Список постов пользователей из БД (только чтение)
-* **привет**
+### Назначение
 
-# Установка
-## Настройка бота
-* Заказать себе бота на @BotFather
-* Назвать его как-нибудь, записать токен авторизации
-## Настройка Heroku
-* Зарегистрироваться на сервере [heroku.com](heroku.com)
-* Скачать командную строку для Heroku ([HerokuCli](https://devcenter.heroku.com/articles/heroku-cli))
-* После установки HerocuCLI он должен быть доступен из консоли
-* Авторизоваться через консоль
-  > heroku login
-* Создать модуль-приложение через консоль
-  > heroku create vlad-shestakov-bot
-* Добавить переменную окружения с вашимм токеном
-  > heroku config:set BOT_TOKEN=НВАШ_ТОКЕН -a vlad-shestakov-bot
-* В интерфейсе Heroku привязать ваш гит репозиторий
-* Выставить автоматический редеплой приложения после коммита репозитория
-* Настроить БД в Heroku:
-  * [Справка по Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#set-up-postgres-on-windows)
-  * Добавить модуль PostrgeSQL в сервис
-  > heroku addons:create heroku-postgresql:hobby-dev
-  * После создания адрес БД будет записан в переменной среды - DATABASE_URL
-  * Подключиться к БД через PSQL
-  > heroku pg:psql -a vlad-shestakov-bot
-  * Накатить скрипты из папки **setup\createdb.sql**
-## Запуск приложения
-* Запуская батники в bin 
-* Через интерфейс или командой (**_run.bat**) 
-  > heroku ps:scale worker=1 -a vlad-shestakov-bot
-* Наблюдать за логом командой (**show_log.bat**)
-> heroku logs --tail -a vlad-shestakov-bot
+Бот написан на Python, использует БД PostgreSQL. Команды обрабатываются с учётом данных из таблицы `commands`; часть функций (например, каталог книг) завязана на внешний API (Homelib). Подробная пошаговая установка и инициализация БД — в [install.md](install.md).
+
+### Структура проекта
+
+```
+vlad-shestakov-bot.py, params.py, requirements.txt, .env.example, README.md, install.md
+install.bat, act.bat, start_server.bat, ...   — скрипты запуска и окружения
+
+install/          — скрипты БД: create_db_dev.bat, db_settings.bat, бэкапы и восстановление
+liquibase/        — миграции схемы БД и тестовых данных, example-конфиги, bat-скрипты наката
+res/              — ресурсы (изображения и т.п.)
+modules/          — дополнительные модули
+```
+
+### Команды бота
+
+- **/help**, **/start** — справка и приветствие
+- Остальные команды задаются в таблице `commands` (см. тестовые данные в [install.md](install.md))
+- **/homelib** - Домашняя библиотека (Требуется API проекта [Домашняя библиотека. Микросервис GitHub](https://github.com/vlad-shestakov/homelibrary-ms))
+- **/weather** - Данные о погоде (Требуется Модуль solar-times - \modules\solar-times)
+- **/version** - Версия бота
+
+/homelib - Домашняя библиотека
+/weather - Данные о погоде
+/version - Версия бота
+
+### Требования
+
+Python, PostgreSQL (в PATH — клиентские утилиты, в т.ч. `createdb`), Liquibase CLI, ОС Windows для .bat-скриптов. Подробнее — [install.md](install.md).
+
+### Краткая последовательность для нового окружения
+
+1. Создать БД: `install\create_db_dev.bat`
+2. Создать таблицы: `liquibase\liquibase_run_create_tabs.bat`
+3. Заполнить таблицы примерами: `liquibase\liquibase_run_testdata.bat`
+4. Настроить `.env` (из `.env.example`), при необходимости — `liquibase\liquibase.properties`
+5. Запуск локально: `python vlad-shestakov-bot.py` или через имеющийся bat-скрипт
+
+Подробная последовательность — [install.md](install.md).
+
+---
+
+## Установка
+
+Получить токен бота у [@BotFather](https://t.me/BotFather), записать его. Далее — пошаговая инструкция по окружению, БД и запуску в [install.md](install.md).
