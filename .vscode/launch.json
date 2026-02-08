@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run vlad-shestakov-bot",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/vlad-shestakov-bot.py",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+﻿
+
+2025-03-25 1.0.17
+
+* Добавлена команда /LearningLog, показывает ссылку на приложение LearningLog
+
+
+2025-03-25 1.0.15
+
+Основан на публичной версии бота vlad-shestakov-bot-heroku
+https://github.com/vlad-shestakov/vlad-shestakov-bot-heroku
