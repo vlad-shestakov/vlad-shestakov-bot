@@ -1,6 +1,6 @@
 # vlad-shestakov-bot-priv
 
-Тестовый Telegram-бот [VladShestakovBot](https://web.telegram.org/z/#1722864364). Стек: Python, PostgreSQL, Liquibase. Установка и запуск — [install.md](install.md).
+Telegram-бот [VladShestakovBot](https://web.telegram.org/z/#1722864364). Стек: Python, PostgreSQL, Liquibase. Установка и запуск — [install.md](install.md).
 
 ### Назначение
 
