@@ -21,11 +21,7 @@
 
 - `DB_NAME_DEV=vladshestakovbot_dev`
 
-При желании изменить имена — отредактировать `install\db_settings.bat` и выполнить его:
-
-```batch
-install\db_settings.bat
-```
+При желании изменить имена — отредактировать `install\db_settings.bat`
 
 ### Создание БД (DEV)
 
@@ -41,7 +37,7 @@ install\create_db_dev.bat
 
 ### Настройка Liquibase
 
-Создать рабочую копию в каталоге `liquibase/`:
+Создать копию файлов настройки из .example в каталоге `liquibase/`:
 
 - `liquibase.example.properties` → `liquibase.properties`
 
@@ -50,7 +46,6 @@ install\create_db_dev.bat
 - `url` — например `jdbc:postgresql://localhost:5432/vladshestakovbot_dev`
 - `username` — пользователь БД
 - `password` — пароль
-- при необходимости `classpath` — путь к `lib/postgresql-42.7.7.jar` (относительно каталога `liquibase/` или абсолютный)
 
 ### Создание таблиц
 
@@ -108,22 +103,22 @@ select c.id , c.command , c.command_hint , c.message_head , c.active , c.ord , c
 
 ## 5. Запуск
 
-Создать виртуальное окружение и установить зависимости (один раз):
+### 5.1. Среда выполнения Python и зависимости
+
+Необходимо один раз создать среду выполнения Python (виртуальное окружение) и установить зависимости. Для этого в корне проекта выполните:
 
 ```batch
 install.bat
 ```
 
-Запуск бота локально:
+Скрипт создаёт каталог `.venv`, активирует виртуальное окружение и устанавливает пакеты из `requirements.txt`. Перед первым запуском бота также должен быть настроен файл `.env` (см. п. 4).
+
+### 5.2. Запуск бота локально
+
+Скрипт активирует виртуальное окружение, стартует бота.
 
 ```batch
 start_server.bat
-```
-
-либо из каталога проекта с активированным окружением:
-
-```batch
-python vlad-shestakov-bot.py
 ```
 
 Остановка: **Ctrl+C**.

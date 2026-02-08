@@ -34,18 +34,6 @@ modules/          — дополнительные модули
 
 Python, PostgreSQL (в PATH — клиентские утилиты, в т.ч. `createdb`), Liquibase CLI, ОС Windows для .bat-скриптов. Подробнее — [install.md](install.md).
 
-### Краткая последовательность для нового окружения
-
-1. Создать БД: `install\create_db_dev.bat`
-2. Создать таблицы: `liquibase\liquibase_run_create_tabs.bat`
-3. Заполнить таблицы примерами: `liquibase\liquibase_run_testdata.bat`
-4. Настроить `.env` (из `.env.example`), при необходимости — `liquibase\liquibase.properties`
-5. Запуск локально: `python vlad-shestakov-bot.py` или через имеющийся bat-скрипт
-
-Подробная последовательность — [install.md](install.md).
-
----
-
 ## Установка
 
-Получить токен бота у [@BotFather](https://t.me/BotFather), записать его. Далее — пошаговая инструкция по окружению, БД и запуску в [install.md](install.md).
+Получить токен бота у [@BotFather](https://t.me/BotFather), записать его. Создать среду выполнения Python и установить зависимости: `install.bat`. Далее — пошаговая инструкция по БД, `.env` и запуску в [install.md](install.md).
