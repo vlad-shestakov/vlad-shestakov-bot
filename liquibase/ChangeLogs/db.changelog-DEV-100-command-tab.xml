@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="liquibase" id="1770545826147-3">
+        <createTable tableName="commands">
+            <column autoIncrement="true" name="id" startWith="11" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="commands_pkey"/>
+            </column>
+            <column name="command" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="command_hint" type="VARCHAR(255)"/>
+            <column name="message_head" type="VARCHAR(255)"/>
+            <column name="message_text" type="TEXT"/>
+            <column name="image_link" type="VARCHAR(255)"/>
+            <column name="image2_link" type="VARCHAR(255)"/>
+            <column name="ord" type="INTEGER"/>
+            <column defaultValueNumeric="0" name="active" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1770545826147-4">
+        <createIndex indexName="commands_command_uk_idx" tableName="commands" unique="true">
+            <column name="command"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

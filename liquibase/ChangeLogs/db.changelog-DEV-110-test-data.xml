@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="liquibase" id="DEV-110-0">
+        <insert tableName="commands">
+            <column name="id" valueNumeric="4"/>
+            <column name="command" value="version"/>
+            <column name="command_hint" value="Версия бота"/>
+            <column name="message_head"/>
+            <column name="message_text"/>
+            <column name="image_link"/>
+            <column name="image2_link"/>
+            <column name="ord" valueNumeric="9999"/>
+            <column name="active" valueNumeric="1"/>
+        </insert>
+        <insert tableName="commands">
+            <column name="id" valueNumeric="9"/>
+            <column name="command" value="homelib"/>
+            <column name="command_hint" value="Домашняя библиотека"/>
+            <column name="message_head"/>
+            <column name="message_text"/>
+            <column name="image_link"/>
+            <column name="image2_link"/>
+            <column name="ord" valueNumeric="580"/>
+            <column name="active" valueNumeric="1"/>
+        </insert>
+        <insert tableName="commands">
+            <column name="id" valueNumeric="10"/>
+            <column name="command" value="weather"/>
+            <column name="command_hint" value="Данные о погоде"/>
+            <column name="message_head" value="Данные о погоде: "/>
+            <column name="message_text" value="/weather_today - Погода на сегодня (Спб)&#13;&#10;/noon - Когда полдень&#13;&#10;/sun_today - Данные солнца на сегодня&#13;&#10;/sun_graph - График солнечной активности"/>
+            <column name="image_link"/>
+            <column name="image2_link"/>
+            <column name="ord" valueNumeric="610"/>
+            <column name="active" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

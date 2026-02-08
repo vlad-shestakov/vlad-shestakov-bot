@@ -1,3 +1,4 @@
+import params as p # Параметры приложения
 import os
 import psycopg2
 from dotenv import load_dotenv
@@ -5,7 +6,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # DATABASE_URL = postgres://username:password@{DB_SERVICE_NAME}:5432/marketing
-DATABASE_URL = os.getenv("DATABASE_URL")
+if p.STAND_TYPE == p.STAND_TYPE_PROD:
+    DATABASE_URL = os.getenv("DATABASE_URL")
+else:
+    DATABASE_URL = os.getenv("DATABASE_URL_TEST")
 
 conn = psycopg2.connect(DATABASE_URL, sslmode='allow') # sslmode = require / allow
 # conn = psycopg2.connect(host="localhost", port = 5432, database="mylocaldb", user="user_name", password="pass")
@@ -18,7 +22,8 @@ class BD1:
     def command_list():
         # Возвращает список команд бота
         sql_query = """ select c.id, c.command, c.command_hint, c.ord 
-                          from COMMANDS c where c.active = 1
+                          from COMMANDS c 
+                         where c.active = 1
                          order by c.ord, c.id"""
         cur.execute(sql_query)
         query_results = cur.fetchall()

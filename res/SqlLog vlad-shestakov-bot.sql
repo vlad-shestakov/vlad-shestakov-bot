@@ -3,15 +3,10 @@
 
 ------------------------------------------------------------
 
-
-
-/*
-TABLE public.posts
-SEQUENCE public.posts_id_seq
-
-TABLE public.users
-SEQUENCE public.users_id_seq
- */
+select * 
+  from databasechangelog
+-- order by 1
+;
 
 ------------------------------------------------------------
 

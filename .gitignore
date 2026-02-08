@@ -135,3 +135,5 @@ dmypy.json
 .pyre/
 
 
+liquibase/liquibase-prod.properties
+liquibase/liquibase.properties
